@@ -2,9 +2,9 @@
     <div class="app">
         <link rel="stylesheet" href="main.css">
         
-        <header class = "noSelect">GeoGem</header>
+        <header class = "noSelect">GeoGrapp</header>
         <section class="intro noSelect">
-          <div>This app will find an event in history which occured near your location
+          <div>This app will find an event in history which occured near your location.
              You can either let the app use your location or you can enter your zip code below. </div>
         </section>
         <section class="controls noSelect" >
@@ -17,7 +17,14 @@
         <div class = "spaced">
           <input type = "radio" id = "useZipCodeRadBtn" name = userSelection value = "Use Zip Code">
           <label for="useZipCodeRadBtn" class = "RBStyle spaced">Use Your Zip Code</label><br>
-          <input type = "text" id = "useZipCode" name = "zipCode" maxlength="5"><br>
+          <input type = "text" id = "useZipCode" class = "noselect" name = "zipCode" maxlength="5"><br>
+          <input type = "button" id = "useZipCodeButton" class = "spaced" name = "zipCodeButton" value = "Use Zip Code" ><br>
+          <p id = "zipCodeError" class = "error hidden"><i>Error: Zip code must be 6 characters long</i></p>
         </div>
+        <section>
+          <div>
+            <p id = "status"></p>
+          </div>
+        </section>
         <script src="app.js"></script>
           
