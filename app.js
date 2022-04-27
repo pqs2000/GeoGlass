@@ -88,6 +88,7 @@ function geoFindMe(){
             var pages = response.query.geosearch; 
             for(var place in pages) {
                 console.log(pages[place].title);
+                console.log(pages[place].dist)
             }
         })
         .catch(function(error){console.log(error)})
