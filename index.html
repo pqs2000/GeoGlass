@@ -2,7 +2,7 @@
     <div class="app">
         <link rel="stylesheet" href="main.css">
         
-        <header class = "noSelect">GeoGrapp</header>
+        <header class = "noSelect">GeoGlass</header>
         <section class="intro noSelect">
           <div>This app will find a point of interest near your location.
              You can either let the app use your location or you can enter your zip code below. </div>
@@ -10,15 +10,15 @@
         <section class="controls noSelect" >
           <div>
            <div class = "spaced">
-          <input type = "radio" id = "useLocationRadBtn" name = userSelection value = "Use Your Location">
+          <input type = "radio" id = "locationRadio" name = userSelection value = "Use Your Location">
           <label for="useLocationRadBtn" class = "RBStyle spaced">Use Your Location</label><br>
-          <input type = "button" id = "useLocationBtn" class = "spaced" name = "useLocationBtn" value = "Click to use your Location"><br>
+          <input type = "button" id = "locationBtn" class = "spaced" name = "useLocationBtn" value = "Click to use your Location"><br>
         </div>
         <div class = "spaced">
-          <input type = "radio" id = "useZipCodeRadBtn" name = userSelection value = "Use Zip Code">
+          <input type = "radio" id = "zipCodeRadio" name = userSelection value = "Use Zip Code">
           <label for="useZipCodeRadBtn" class = "RBStyle spaced">Use Your Zip Code</label><br>
-          <input type = "text" id = "useZipCode" class = "noselect spaced" name = "zipCode" maxlength="5"><br>
-          <input type = "button" id = "useZipCodeButton" class = "spaced" name = "zipCodeButton" value = "Use Zip Code" ><br>
+          <input type = "text" id = "zipCodeInput" class = "noselect spaced" name = "zipCode" maxlength="5"><br>
+          <input type = "button" id = "zipCodeButton" class = "spaced" name = "zipCodeButton" value = "Use Zip Code" ><br>
           <p id = "zipCodeError" class = "error hidden"><i>Error: Zip code must be 6 characters long</i></p>
         </div>
         <section>
