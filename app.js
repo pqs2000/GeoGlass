@@ -123,16 +123,29 @@ function geoFindMe2(String){
 
     const status = document.querySelector("#status");
 
+    
     //request for lat and long using zip code
     const request = new XMLHttpRequest(); 
     
-    //https://www.zipcodeapi.com/rest/DemoOnly00S9DXRS56eyOr2aU2ygCV2jKwXImAU8RvdwH8Bvmo9TfOHEaToMGxZ9/info.json/28601/degrees
+    //https://app.zipcodebase.com/api/v1/search?apikey=4aa76190-cbe5-11ec-b0cd-f9a8c45e670f&codes=10005%2C51503
 
-    request.open('GET', "https://www.zipcodeapi.com/rest/lAPeqbYnxI6yHW2cJa5tzU6ygvmGSjGleCsHCDjnNh9sukMGR9uVxmGESCOpVxT3/info.json/" 
-    + String + "/degrees");
+    request.addEventListener('readystatechange', () => {
+        //console.log(request, request.readyState)
+        if(request.readyState === 4){
+            console.log(request.response);
+        };
+    });
+
+    let url2 = "https://app.zipcodebase.com/api/v1/search?apikey=4aa76190-cbe5-11ec-b0cd-f9a8c45e670f&codes="
+    request.open('GET', url2 + String + "&country=us");
     request.send(); 
 
     console.log("request with zip code " + String + " was sent");
+    console.log(request, request.latitude);
+    //console.log(request[longitude]);
+    
+    
+
     /*
     
     var url = "https://en.wikipedia.org/w/api.php"; 
