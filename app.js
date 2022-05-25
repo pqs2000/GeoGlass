@@ -1,5 +1,5 @@
 
-
+let myTable = document.querySelector('#table'); 
 
 const successCallback = (position) => {
     console.log(position);
@@ -24,9 +24,22 @@ function init(){
     //event listeners for the buttons
     zipCodeButton.addEventListener('click',zipCodeClick)
     locationBtn.addEventListener('click', getLocation);
+    clearDataButton.addEventListener('click', clearData);
 }
 
+function clearData(){
+    document.getElementById("locationBtn").disabled = true;
+    document.getElementById("zipCodeInput").disabled = true; 
+    document.getElementById("zipCodeButton").disabled = true; 
+    document.getElementById("zipCodeInput").classList.add('noselect'); 
 
+    document.getElementById("locationRadio").checked = false; 
+    document.getElementById("zipCodeRadio").checked = false; 
+
+    document.getElementById("zipCodeInput").value = ""; 
+
+    myTable.removeChild(myTable.firstChild);
+}
 
 //this function will enable the location button once the radio button is pressed 
 function enableLocationButton() {
@@ -99,10 +112,52 @@ function geoFindMe(){
         .then(function(response){return response.json();})
         .then(function(response) {
             var pages = response.query.geosearch; 
+            console.log(pages);
+            
+            var listingArray = []; 
+
+            let headers = ['Name', 'Distance'];
+            
             for(var place in pages) {
-                console.log(pages[place].title);
-                console.log(pages[place].dist)
+                //console.log(pages[place].title);
+                //console.log(pages[place].dist)
+                var listings = {};
+                listings.name = pages[place].title;
+                //console.log(listings.name); 
+                listings.distance = pages[place].dist + "m";
+                //console.log(listings.distance); 
+                listingArray.push(listings);
             }
+
+            console.log(listingArray);
+
+            let table = document.createElement('table');
+            let headerRow = document.createElement('tr');
+
+            headers.forEach(headerText => {
+                let header = document.createElement('th');
+                let textNode = document.createTextNode(headerText); 
+                header.appendChild(textNode); 
+                headerRow.appendChild(header); 
+            });
+
+            table.appendChild(headerRow); 
+
+            listingArray.forEach(lis => {
+                let row = document.createElement('tr'); 
+
+                Object.values(lis).forEach(text => {
+                    let cell = document.createElement('td'); 
+                    let textNode = document.createTextNode(text);
+                    cell.appendChild(textNode); 
+                    row.appendChild(cell);
+                })
+
+                table.appendChild(row);
+            })
+
+            myTable.appendChild(table)
+
         })
         .catch(function(error){console.log(error)})
     
@@ -117,7 +172,7 @@ function geoFindMe(){
     if(!navigator.geolocation){
         status.textContent = "Geolocation is not supported by your browser";
     } else {
-        status.textContent = "Locating..."; 
+        //status.textContent = "Locating..."; 
         navigator.geolocation.getCurrentPosition(success, error); 
     }
 }
@@ -172,10 +227,51 @@ function geoFindMe2(latitude, longitude){
         .then(function(response){return response.json();})
         .then(function(response) {
             var pages = response.query.geosearch; 
+            console.log(pages);
+            
+            var listingArray = []; 
+
+            let headers = ['Name', 'Distance'];
+            
             for(var place in pages) {
-                console.log(pages[place].title);
-                console.log(pages[place].dist)
+                //console.log(pages[place].title);
+                //console.log(pages[place].dist)
+                var listings = {};
+                listings.name = pages[place].title;
+                //console.log(listings.name); 
+                listings.distance = pages[place].dist + "m";
+                //console.log(listings.distance); 
+                listingArray.push(listings);
             }
+
+            console.log(listingArray);
+
+            let table = document.createElement('table');
+            let headerRow = document.createElement('tr');
+
+            headers.forEach(headerText => {
+                let header = document.createElement('th');
+                let textNode = document.createTextNode(headerText); 
+                header.appendChild(textNode); 
+                headerRow.appendChild(header); 
+            });
+
+            table.appendChild(headerRow); 
+
+            listingArray.forEach(lis => {
+                let row = document.createElement('tr'); 
+
+                Object.values(lis).forEach(text => {
+                    let cell = document.createElement('td'); 
+                    let textNode = document.createTextNode(text);
+                    cell.appendChild(textNode); 
+                    row.appendChild(cell);
+                })
+
+                table.appendChild(row);
+            })
+
+            myTable.appendChild(table)
         })
         .catch(function(error){console.log(error)})
     
