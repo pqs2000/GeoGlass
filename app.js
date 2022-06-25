@@ -90,9 +90,8 @@ function geoFindMe(){
         const latitude = position.coords.latitude.toString(); 
         const longitude = position.coords.longitude.toString(); 
         status.textContent = ""; 
-        
-    
-    
+     
+
     var url = "https://en.wikipedia.org/w/api.php"; 
 
     var params = {
@@ -111,6 +110,13 @@ function geoFindMe(){
     fetch(url)
         .then(function(response){return response.json();})
         .then(function(response) {
+            
+            //this deletes the table, provided that one already exists
+            if (myTable.firstChild){
+                myTable.removeChild(myTable.firstChild);
+            }
+            
+            
             var pages = response.query.geosearch; 
             console.log(pages);
             
@@ -208,7 +214,6 @@ function geoFindMe2(latitude, longitude){
     var url = "https://en.wikipedia.org/w/api.php"; 
 
 
-
     var params = {
         action: "query",
         list: "geosearch", 
@@ -226,6 +231,13 @@ function geoFindMe2(latitude, longitude){
     fetch(url)
         .then(function(response){return response.json();})
         .then(function(response) {
+            
+            //this deletes the table, provided that one already exists
+            if (myTable.firstChild){
+                myTable.removeChild(myTable.firstChild);
+            }
+            
+            
             var pages = response.query.geosearch; 
             console.log(pages);
             

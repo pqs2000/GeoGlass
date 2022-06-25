@@ -50,6 +50,9 @@ header {
   display: none; 
 }
 
+table{
+  width: 100%; 
+}
 
 .controls {
   padding: 20px 50px;
